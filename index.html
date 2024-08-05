@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Library</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <link rel="icon" href="images/book.png" type="image/png">
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <h1>Your library!</h1>
+
+        </header>
+
+
+        <main>
+
+            <div class="add-book">
+
+                <button id="addBook">+ Add book</button>
+
+            </div>
+
+            <div id="library">
+
+                <dialog id="bookAdder">
+
+                    <form class="add-book-form" id="addBookForm">
+
+                        <h3>Add a new book</h3>
+                        <input type="text" class="inputText" id="title" placeholder="Title" required maxlength="50">
+                        <input type="text" class="inputText" id="author" placeholder="Author" required maxlength="35">
+                        <input type="number" class="inputNumber" id="pages" placeholder="Pages" required maxlength="5">
+                        <div class="isRead">
+
+                            <label for="haveReadIt">Have you read it?</label>
+                            <input type="checkbox" class="inputCheckBox" id="haveReadIt">
+                            
+                        </div>
+                        <button id="submitButton">Submit</button>
+
+                    </form>
+
+                </dialog>
+
+            </div>
+
+        </main>
+
+        <footer>
+
+            <label>Bonacci, Lucas Javier - For TOP</label>
+
+        </footer>
+
+    </body>
+
+</html>

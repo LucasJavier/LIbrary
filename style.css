@@ -1,0 +1,250 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+/*HEADER*/
+
+header{
+    background-color: rgba(105, 220, 158,0.7);
+    flex: 0 1 auto;
+    text-align: center;
+    max-height: 100px;
+    z-index: 1;
+}
+
+h1{
+    background-color: rgba(0,0,0,0);
+    color: rgba(0, 0, 0, 1);
+    box-shadow: 1px 1px 7px 15px rgba(0,0,0,0.5);
+    font-size: 3.5em;
+    margin: 0;
+    border: 0;
+    padding: 10px;
+}
+
+/*END HEADER*/
+
+/*LIBRARY*/
+
+main{
+    flex: 1 1 auto;
+    background-color: rgb(196, 174, 216);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*ADD BOOK*/
+
+.add-book{
+    padding: 20px;
+    text-align: center;
+    margin: 5px;
+}
+
+#addBook{
+    background-color: rgba(221, 210, 195, 0);
+    border: none;
+    color: black;
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#addBook:hover{
+    background-color: rgba(163, 188, 249, 1);
+    border-radius: 20px;    
+}
+
+/*END ADD BOOK*/
+
+/*BOOKS*/
+
+#library{
+    flex: 3 1 auto;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+    gap: 20px 20px;
+    margin: 20px 60px 20px 20px;
+    padding: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.my-container-book{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    max-width: 400px;
+    max-height: 500px;
+    min-width: 300px;
+    margin: 5px;
+    padding: 10px;
+    border: 5px solid rgba(0, 0, 0, 0.7);
+    align-items: stretch;
+    gap: 10px;
+    border-radius: 15px;
+}
+
+.my-book{
+    font-weight: 700;
+    min-width: 250px;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 10px;
+    border: 2px solid rgba(100, 173, 173, 0.7);
+    border-radius: 20px;
+}
+
+.my-read-it-button-book,
+.my-not-read-it-button-book,
+.my-remove-button-book{
+    border-radius: 10px;
+    min-height: 40px;
+    font-size: 1.2em;
+}
+
+.my-read-it-button-book{
+    background-color: rgba(131, 235, 131,0.4);
+}
+
+.my-not-read-it-button-book{
+    background-color: rgba(218, 65, 4, 0.4);
+}
+
+.my-remove-button-book{
+    background-color: rgba(190, 186, 155, 0.5);
+}
+
+.my-read-it-button-book:hover{
+    background-color: rgba(218, 65, 4, 0.4);
+}
+
+.my-not-read-it-button-book:hover{
+    background-color: rgba(131, 235, 131,0.4);;
+}
+
+.my-remove-button-book:hover{
+    background-color: rgba(192, 65, 65, 0.4);
+}
+
+/*END BOOKS*/
+
+/*DIALOG*/
+
+#bookAdder{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    margin: 0px;
+    border: 2px solid black;
+    padding: 0px;
+    transform: translate(-50%, -50%);
+    min-height: 310px;
+    min-width: 350px;
+}
+
+form{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+input{
+    flex: 1 1 auto;
+    margin: 5px;
+    border: 2px solid black;
+    padding: 0;
+    min-width: 300px;
+    min-height: 30px;
+}
+
+input[type="text"],
+input[type="number"]{
+    cursor: text;
+    border-radius: 20px;
+    padding: 5px 5px 5px 20px;
+}
+
+.isRead{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+label[for="haveReadIt"]{
+    flex: 1;
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+input[type="checkbox"]{
+    flex: 0 1 auto;
+    margin: 0;
+    border: 2px solid black;
+    padding: 2px;
+    max-width: 30px;
+    min-width: 20px;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+#submitButton{
+    flex: 1 1 auto;
+    margin: 0px 0px 20px 0px;
+    min-height: 40px;
+    min-width: 200px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+#submitButton:hover{
+    background-color: rgba(105, 220, 158,0.7);
+}
+
+/*END DIALOG*/
+
+/*END LIBRARY*/
+
+/*FOOTER*/
+
+footer{
+    background-color: antiquewhite;
+    text-align: center;
+    flex: 0 1 auto;
+    box-shadow: -1px -1px 5px 2px rgba(0,0,0,0.5);
+    padding: 10px;
+}
+
+label{
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+h1,
+label{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*END FOOTER*/
