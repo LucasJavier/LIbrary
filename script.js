@@ -133,8 +133,8 @@ function updateLibraryDisplay(){
 function toggleButton(event){
     const index = event.target.getAttribute("index");
     const book = bookList[index];
-    book.haveReadIt = !book.haveReadIt; // Toggle the read status
-    textReadButton(book.haveReadIt, event.target); // Update the button text and style
+    book.haveReadIt = !book.haveReadIt;
+    textReadButton(book.haveReadIt, event.target);
 }
 
 function addTextContent(bookElements, book){
