@@ -115,6 +115,7 @@ function restoreBackground(){
 function removeBook(event){
     const index = event.target.getAttribute('index');
     bookList.splice(index,1);
+    bookSize -= 1;
     updateLibraryDisplay();
 }
 
