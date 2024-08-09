@@ -15,7 +15,10 @@ let bookSize = 0;
 
 //Eventos
 addButton.addEventListener("click", (event) => {
+    library.appendChild(dialog);
     dialog.show();
+    console.log(bookSize);
+    console.log(bookList);
     header.style.backgroundColor = "rgba(162, 174, 216, 0.5)";
     main.style.backgroundColor = "rgba(162, 220, 158, 0.5)";
     footer.style.backgroundColor = "rgba(162, 235, 215, 0.5)";
@@ -29,6 +32,8 @@ document.addEventListener("click", (event) => {
         const rect = dialog.getBoundingClientRect();
         if(x < rect.left || x > rect.right || y < rect.bottom || y > rect.top){
             dialog.close();
+            library.removeChild(dialog); 
+            restoreBackground();
         }
     }
 });
@@ -41,22 +46,33 @@ dialog.addEventListener("close", () => {
     title.value = "";
     author.value = "";
     pages.value = "";
+    document.getElementById('titleError').textContent = '';
+    document.getElementById('authorError').textContent = '';
+    document.getElementById('pagesError').textContent = '';
     haveReadIt.checked = false;
 });
 
 submitButton.addEventListener("click", (event) => {
     event.preventDefault();
-    const book = new Book(title.value, author.value, pages.value, haveReadIt.checked);
-    bookList.push(book);
-    const index = bookSize;
-    bookSize += 1;
-    const bookElements = createElements(index);
-    textReadButton(haveReadIt.checked, bookElements[4]);
-    addTextContent(bookElements, book);
-    styleElements(bookElements);
-    addElements(bookElements);
-    restoreBackground();
-    dialog.close();
+    document.getElementById('titleError').textContent = '';
+    document.getElementById('authorError').textContent = '';
+    document.getElementById('pagesError').textContent = '';
+    let valid = true;
+    if (title.value.trim() === '') {
+        document.getElementById('titleError').textContent = 'Title is required.';
+        valid = false;
+    }
+
+    if (author.value.trim() === '') {
+        document.getElementById('authorError').textContent = 'Author is required.';
+        valid = false;
+    }
+
+    if (pages.value.trim() === '') {
+        document.getElementById('pagesError').textContent = 'Pages are required.';
+        valid = false;
+    }
+    if(valid) createBook();
 });
 
 //Funciones
@@ -102,8 +118,16 @@ function styleElements(bookElements){
 }
 
 function textReadButton(readIt, readItButton){
-    readIt ? readItButton.textContent = "Read" : readItButton.textContent = "Not read"
-    readIt ? readItButton.classList.add("my-read-it-button-book") : readItButton.classList.add("my-not-read-it-button-book");
+    if(readIt){
+        readItButton.textContent = "Read";
+        readItButton.classList.remove("my-not-read-it-button-book");
+        readItButton.classList.add("my-read-it-button-book");
+    }
+    else{
+        readItButton.textContent = "Not read";
+        readItButton.classList.remove("my-read-it-button-book")
+        readItButton.classList.add("my-not-read-it-button-book");
+    }
 }
 
 function restoreBackground(){
@@ -120,7 +144,8 @@ function removeBook(event){
 }
 
 function updateLibraryDisplay(){
-    library.textContent = '';
+    const bookElements = library.querySelectorAll('.my-container-book');
+    bookElements.forEach(element => element.remove());
     bookList.forEach((book, index) => {
         const bookElements = createElements(index);
         textReadButton(book.haveReadIt, bookElements[4]);
@@ -141,4 +166,19 @@ function addTextContent(bookElements, book){
     bookElements[1].textContent = `${book.title}`;
     bookElements[2].textContent = `${book.author}`;
     bookElements[3].textContent = `${book.pages} pages`;
+}
+
+function createBook(){
+    const book = new Book(title.value, author.value, pages.value, haveReadIt.checked);
+    bookList.push(book);
+    const index = bookSize;
+    bookSize += 1;
+    const bookElements = createElements(index);
+    textReadButton(haveReadIt.checked, bookElements[4]);
+    addTextContent(bookElements, book);
+    styleElements(bookElements);
+    addElements(bookElements);
+    restoreBackground();
+    dialog.close();
+    library.removeChild(dialog); 
 }

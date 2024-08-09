@@ -72,9 +72,7 @@ main{
 #library{
     flex: 3 1 auto;
     display: grid;
-    grid-auto-columns: 1fr;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+    grid-template-columns: repeat(3, minmax(400px,1fr));
     gap: 20px 20px;
     margin: 20px 60px 20px 20px;
     padding: 10px;
@@ -147,18 +145,30 @@ main{
 
 #bookAdder{
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 50%;
     left: 50%;
     border-radius: 10px;
     margin: 0px;
-    border: 2px solid black;
+    border: 4px solid black;
     padding: 0px;
     transform: translate(-50%, -50%);
-    min-height: 310px;
-    min-width: 350px;
+    min-height: 500px;
+    min-width: 400px;
+    visibility: hidden;
+    transition: visibility 0.3s ease, transform 0.3s ease;
+    background-color: rgba(255, 220, 172, 1);
 }
 
+#bookAdder[open] {
+    visibility: visible;
+}
+
+
+
 form{
+    flex: 1 1 0;
     margin: 0;
     border: 0;
     padding: 0;
@@ -169,6 +179,10 @@ form{
     gap: 10px
 }
 
+form h3{
+    font-size: 1.5em;
+}
+
 input{
     flex: 1 1 auto;
     margin: 5px;
@@ -176,6 +190,12 @@ input{
     padding: 0;
     min-width: 300px;
     min-height: 30px;
+    max-height: 40px;
+    background-color: rgba(249, 255, 250, 1);
+}
+
+input::placeholder{
+    font-weight: 600;
 }
 
 input[type="text"],
@@ -183,6 +203,7 @@ input[type="number"]{
     cursor: text;
     border-radius: 20px;
     padding: 5px 5px 5px 20px;
+    font-size: 1em;
 }
 
 .isRead{
@@ -191,12 +212,14 @@ input[type="number"]{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    max-height: 70px;
 }
 
 label[for="haveReadIt"]{
     flex: 1;
     margin-right: 10px;
     font-size: 1.5em;
+    font-weight: 600;
 }
 
 input[type="checkbox"]{
@@ -214,6 +237,7 @@ input[type="checkbox"]{
     flex: 1 1 auto;
     margin: 0px 0px 20px 0px;
     min-height: 40px;
+    max-height: 50px;
     min-width: 200px;
     border-radius: 10px;
     font-size: 1.2em;
@@ -221,6 +245,13 @@ input[type="checkbox"]{
 
 #submitButton:hover{
     background-color: rgba(105, 220, 158,0.7);
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
 }
 
 /*END DIALOG*/

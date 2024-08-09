@@ -36,16 +36,19 @@
                     <form class="add-book-form" id="addBookForm">
 
                         <h3>Add a new book</h3>
-                        <input type="text" class="inputText" id="title" placeholder="Title" required maxlength="50">
-                        <input type="text" class="inputText" id="author" placeholder="Author" required maxlength="35">
+                        <input type="text" class="inputText" id="title" placeholder="Title" required maxlength="50" title="Please enter the book title">
+                        <span id="titleError" class="error-message"></span>
+                        <input type="text" class="inputText" id="author" placeholder="Author" required maxlength="35" title="Please enter the book's author">
+                        <span id="authorError" class="error-message"></span>
                         <input type="number" class="inputNumber" id="pages" placeholder="Pages" required maxlength="5">
+                        <span id="pagesError" class="error-message"></span>
                         <div class="isRead">
 
                             <label for="haveReadIt">Have you read it?</label>
                             <input type="checkbox" class="inputCheckBox" id="haveReadIt">
                             
                         </div>
-                        <button id="submitButton">Submit</button>
+                        <button type="submit" id="submitButton">Submit</button>
 
                     </form>
 
